@@ -5,6 +5,7 @@ import { ALL_QUESTIONS } from '../../data/final'
 import { moduleById } from '../../data/modules'
 import { VAK_STYLES, analyseVak } from '../../data/vak'
 import Logo from '../../components/Logo'
+import Watermark from '../../components/Watermark'
 import { Ring, Button } from '../../components/ui'
 
 // Built to fit one phone screen so students can screenshot it for submission.
@@ -73,8 +74,10 @@ export default function FinalResult() {
 
       {/* ── Below the screenshot area ── */}
       <div className="mt-10">
-        <p className="eyebrow text-muted mb-3">Review your answers</p>
-        <ol className="card divide-y divide-line">
+        <p className="eyebrow text-muted mb-1">Review your answers</p>
+        <p className="text-xs text-faint mb-3">Watermarked with your name. Don’t share these answers.</p>
+        <Watermark className="card rounded-[1.25rem]" lines={[`${r.name} · ${r.squad}`, `Attempt ${r.attempt} · ${new Date(r.date).toLocaleString(undefined, { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}`]}>
+        <ol className="divide-y divide-line">
           {r.answers.map((a, n) => {
             const q = ALL_QUESTIONS[a.id]
             if (!q) return null
@@ -90,6 +93,7 @@ export default function FinalResult() {
             )
           })}
         </ol>
+        </Watermark>
         <div className="mt-6 flex gap-3">
           <Button variant="ghost" to="/final" className="flex-1"><RotateCcw size={18} /> Final quiz</Button>
           <Button to="/" className="flex-1"><Home size={18} /> Home</Button>
