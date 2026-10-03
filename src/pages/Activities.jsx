@@ -31,7 +31,7 @@ export default function Activities() {
           <div className="p-5">
             <p className="eyebrow text-gold">Lesson Planning · 10 min</p>
             <h2 className="display uppercase text-3xl mt-1">VAK Learning Styles Questionnaire</h2>
-            <p className="text-muted mt-1">30 questions about how you behave. Then see your Visual, Auditory and Kinaesthetic breakdown, with feedback from the VAK Guide.</p>
+            <p className="text-muted mt-1">30 questions about how you behave. Then see your Visual, Auditory and Kinesthetic breakdown, with feedback from the VAK Guide.</p>
             <div className="mt-4 flex items-center justify-between">
               {vak ? (
                 <span className="flex items-center gap-3 text-sm">

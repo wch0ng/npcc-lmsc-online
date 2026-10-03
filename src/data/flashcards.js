@@ -37,6 +37,6 @@ export const FLASHCARDS = [
   { id: 'i4', module: 'moi', front: 'Why allow continuous practice?', back: 'To build muscle memory — while constantly checking for and correcting mistakes.' },
   { id: 'p1', module: 'lesson-planning', front: 'Three reasons to plan a lesson', back: 'Structure and direction; monitoring of learning via objectives; lets third parties execute it without the planner.' },
   { id: 'p2', module: 'lesson-planning', front: 'What is a contingency plan?', back: 'A back-up plan as a precaution — e.g. what if it rains?' },
-  { id: 'p3', module: 'lesson-planning', front: 'What does VAK stand for?', back: 'Visual (by seeing), Auditory (by listening), Kinaesthetic (by touching / hands-on).' },
+  { id: 'p3', module: 'lesson-planning', front: 'What does VAK stand for?', back: 'Visual (by seeing), Auditory (by listening), Kinesthetic (by touching / hands-on).' },
   { id: 'p4', module: 'lesson-planning', front: 'Is the lesson planner always the lesson conductor?', back: 'No! Give a clear breakdown so that any lesson conductor can understand the plan.' },
 ]

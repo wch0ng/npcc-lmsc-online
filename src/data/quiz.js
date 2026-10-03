@@ -194,15 +194,15 @@ export const QUIZ = [
   {
     id: 'q25', module: 'lesson-planning', type: 'sort',
     question: 'Which teaching approach suits each learner?',
-    zones: ['Visual', 'Auditory', 'Kinaesthetic'],
+    zones: ['Visual', 'Auditory', 'Kinesthetic'],
     items: [
       { id: 'a', label: 'Diagrams & handouts', zone: 'Visual' },
       { id: 'b', label: 'Spoken explanation', zone: 'Auditory' },
-      { id: 'c', label: 'Hands-on practice', zone: 'Kinaesthetic' },
+      { id: 'c', label: 'Hands-on practice', zone: 'Kinesthetic' },
       { id: 'd', label: 'Watch a demo first', zone: 'Visual' },
       { id: 'e', label: 'Talk it over', zone: 'Auditory' },
-      { id: 'f', label: 'Try it out', zone: 'Kinaesthetic' },
+      { id: 'f', label: 'Try it out', zone: 'Kinesthetic' },
     ],
-    explanation: 'Visual learners prefer seen things, auditory learners prefer listening, kinaesthetic learners prefer doing.',
+    explanation: 'Visual learners prefer seen things, auditory learners prefer listening, kinesthetic learners prefer doing.',
   },
 ]

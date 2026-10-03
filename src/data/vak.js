@@ -1,5 +1,5 @@
 // VAK Learning Styles Self-Assessment Questionnaire — transcribed from
-// reference/VAK (Questionaire).pdf. Option a = Visual, b = Auditory, c = Kinaesthetic.
+// reference/VAK (Questionaire).pdf. Option a = Visual, b = Auditory, c = Kinesthetic.
 
 export const VAK_QUESTIONS = [
   { q: 'When I operate new equipment I generally:', a: 'read the instructions first', b: 'listen to an explanation from someone who has used it before', c: 'go ahead and have a go, I can figure it out as I use it' },
@@ -80,12 +80,12 @@ export const VAK_STYLES = {
     key: 'k',
     letter: 'K',
     option: 'C',
-    name: 'Kinaesthetic',
+    name: 'Kinesthetic',
     by: 'by touching / hands-on',
     color: 'kin',
     phrases: ['Let me try', 'How do you feel?'],
     guide:
-      'Someone with a Kinaesthetic learning style has a preference for physical experience – touching, feeling, holding, doing, practical hands-on experiences. These people will use phrases such as ‘let me try’, ‘how do you feel?’ and will be best able to perform a new task by going ahead and trying it out, learning as they go. These are the people who like to experiment, hands-on, and never look at the instructions first!',
+      'Someone with a Kinesthetic learning style has a preference for physical experience – touching, feeling, holding, doing, practical hands-on experiences. These people will use phrases such as ‘let me try’, ‘how do you feel?’ and will be best able to perform a new task by going ahead and trying it out, learning as they go. These are the people who like to experiment, hands-on, and never look at the instructions first!',
     learnsBest: ['Hands-on practice', 'Trying it out', 'Experimenting', 'Movement and role-play', 'Learning as they go'],
     tips: [
       'Practise the movement or skill early and often (muscle memory).',
@@ -99,7 +99,7 @@ export const VAK_STYLES = {
 export const VAK_GUIDE_INTRO = [
   'If you chose mostly A’s you have a VISUAL learning style.',
   'If you chose mostly B’s you have an AUDITORY learning style.',
-  'If you chose mostly C’s you have a KINAESTHETIC learning style.',
+  'If you chose mostly C’s you have a KINESTHETIC learning style.',
 ]
 
 export const VAK_GUIDE_NOTES = {

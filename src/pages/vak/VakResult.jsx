@@ -109,7 +109,7 @@ export default function VakResult() {
       {/* Teaching others: link back to Lesson Planning */}
       <section className="card p-5 mt-4 bg-navy! text-on-navy border-navy!">
         <p className="eyebrow text-gold flex items-center gap-2"><GraduationCap size={16} /> When you plan a lesson</p>
-        <p className="mt-2 text-[15px] leading-relaxed">Your cadets have learning styles too. A lesson that <b>shows</b> (demonstration), <b>tells</b> (explanation) and lets them <b>do</b> (practice) reaches visual, auditory and kinaesthetic learners alike. That’s why MOI includes all three.</p>
+        <p className="mt-2 text-[15px] leading-relaxed">Your cadets have learning styles too. A lesson that <b>shows</b> (demonstration), <b>tells</b> (explanation) and lets them <b>do</b> (practice) reaches visual, auditory and kinesthetic learners alike. That’s why MOI includes all three.</p>
         <Link to="/learn/lesson-planning" className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-gold">Lesson Planning module <ArrowRight size={16} /></Link>
       </section>
 

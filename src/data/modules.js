@@ -349,7 +349,7 @@ export const MODULES = [
       {
         type: 'text',
         heading: 'Understanding learning behaviour (VAK)',
-        text: 'The VAK model suggests most people can be divided into one of three preferred styles of learning — Visual (by seeing), Auditory (by listening) and Kinaesthetic (by touching / hands-on). There is no right or wrong learning style. Take the VAK questionnaire to understand your own.',
+        text: 'The VAK model suggests most people can be divided into one of three preferred styles of learning — Visual (by seeing), Auditory (by listening) and Kinesthetic (by touching / hands-on). There is no right or wrong learning style. Take the VAK questionnaire to understand your own.',
       },
     ],
   },
