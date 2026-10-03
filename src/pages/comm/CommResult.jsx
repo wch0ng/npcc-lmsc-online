@@ -20,7 +20,7 @@ export default function CommResult() {
   const checks = [
     { ok: r.sawEnd, label: 'Read all the way to instruction 20', detail: r.sawEnd ? (r.readFirst ? 'Before doing anything. Exactly what instruction 1 asked.' : 'But only after you had already started marking the paper.') : 'You never reached the last instruction.' },
     { ok: r.followedOnly2, label: 'Did only instruction 2', detail: r.followedOnly2 ? 'No unnecessary marks or ticks.' : describeExtras(r) },
-    { ok: r.nameDone, label: 'Wrote name and squad in the top-right corner', detail: r.nameDone ? (r.nameAndSquad ? 'Done.' : 'Name found. Did you include your squad too?') : 'Nothing written in the top-right corner.' },
+    { ok: r.nameDone, label: 'Typed name and squad in the top-right corner', detail: r.nameDone ? (r.nameAndSquad ? 'Done.' : 'Name found. Did you include your squad too?') : 'Nothing typed in the top-right corner.' },
     { ok: !r.timedOut, label: 'Handed in within 2½ minutes', detail: r.timedOut ? 'Time ran out.' : `Used ${fmt(r.elapsed)} of 2:30.` },
   ]
 
@@ -46,7 +46,7 @@ export default function CommResult() {
           <p className="eyebrow text-muted">The trick</p>
           <Instruction n={1} text={COMM_TEST.instructions[0].text} />
           <Instruction n={20} text={COMM_TEST.instructions[19].text} />
-          <p className="text-[15px] leading-relaxed text-muted">The only thing to do was instruction 2: write your name and squad in the top-right corner. Everything from 3 to 19 was a test of whether you <b className="text-ink">received the whole message before acting</b>.</p>
+          <p className="text-[15px] leading-relaxed text-muted">The only thing to do was instruction 2: type your name and squad in the top-right corner. Everything from 3 to 19 was a test of whether you <b className="text-ink">received the whole message before acting</b>.</p>
         </div>
       </motion.section>
 

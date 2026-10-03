@@ -1,5 +1,6 @@
 // “2 ½ Minutes Test — Are you a good receiver?”
-// Transcribed from reference/Communications Test.pdf.
+// Transcribed from reference/Communications Test.pdf, adapted for the app:
+// 2 and 6 say “Type”, and 15 points at the word ‘POLICE’ in the letterhead.
 // kind: how the instruction is carried out on paper
 //   'read'   – nothing to do yet          'write' – pen on the paper
 //   'say'    – speak / shout aloud        'move'  – physical action
@@ -9,11 +10,11 @@ export const COMM_TEST = {
   seconds: 150,
   instructions: [
     { n: 1, text: 'Read everything before doing anything.', kind: 'read' },
-    { n: 2, text: 'Write your name and squad name in the top right-hand corner of this paper.', kind: 'write' },
+    { n: 2, text: 'Type your name and squad name in the top right-hand corner of this paper.', kind: 'write' },
     { n: 3, text: 'Circle the word ‘of’ in sentence two.', kind: 'write' },
     { n: 4, text: 'Draw 8 circles in the top left-hand corner of this paper.', kind: 'write' },
     { n: 5, text: 'Punch your fist in the air, shout a CI’s name. (He or she must be in the room.)', kind: 'say' },
-    { n: 6, text: 'Write your name again under the second title of this paper.', kind: 'write' },
+    { n: 6, text: 'Type your name again under the second title of this paper.', kind: 'write' },
     { n: 7, text: 'Draw a circle around sentence three.', kind: 'write' },
     { n: 8, text: 'Underline the first fraction you see in the test.', kind: 'write' },
     { n: 9, text: 'Put a smiley face in the lower-right hand corner of this paper.', kind: 'write' },
@@ -22,7 +23,7 @@ export const COMM_TEST = {
     { n: 12, text: 'On the right margin of this paper, multiply 69 by 8.', kind: 'write' },
     { n: 13, text: 'Draw a triangle around the word ‘hand’ in sentence two.', kind: 'write' },
     { n: 14, text: 'If you think you have followed directions carefully to this point, call ‘I have’.', kind: 'say' },
-    { n: 15, text: 'Draw a square around the school logo found on this paper.', kind: 'write' },
+    { n: 15, text: 'Draw a square around the word ‘POLICE’ found on this paper.', kind: 'write' },
     { n: 16, text: 'Stand up, turn around once and sit down.', kind: 'move' },
     { n: 17, text: 'Draw an ‘X’ across this paper.', kind: 'write' },
     { n: 18, text: 'Stand up, turn to the instructor and shout ‘I am nearly finished, I have followed directions’. Wait for the instructor reply: “Hurray” then, sit down.', kind: 'move' },
