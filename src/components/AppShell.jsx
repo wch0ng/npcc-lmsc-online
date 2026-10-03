@@ -1,6 +1,7 @@
 import { NavLink, Outlet, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { Home, BookOpen, Target, Sparkles } from 'lucide-react'
+import Logo from './Logo'
 
 const TABS = [
   { to: '/', label: 'Home', icon: Home },
@@ -21,6 +22,7 @@ export default function AppShell() {
       <header className="hidden md:block sticky top-0 z-30 bg-navy text-on-navy safe-top">
         <div className="mx-auto max-w-5xl px-6 h-16 flex items-center gap-8">
           <NavLink to="/" className="flex items-center gap-3">
+            <Logo size={36} className="ring-1 ring-white/15" />
             <span className="display text-xl uppercase tracking-wide">NPCC · LMSC</span>
           </NavLink>
           <nav className="flex gap-1 ml-auto">

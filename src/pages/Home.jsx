@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Timer, BookOpen, Layers, ListChecks, Target } from 'lucide-react'
 import { VAK_THEME } from '../components/vakTheme'
 import { useProgress } from '../hooks/useProgress'
+import Logo from '../components/Logo'
 import { MODULES } from '../data/modules'
 import { FLASHCARDS } from '../data/flashcards'
 import { VAK_STYLES, analyseVak } from '../data/vak'
@@ -24,7 +25,10 @@ export default function Home() {
       <section className="bg-navy text-on-navy safe-top relative overflow-hidden">
         <div aria-hidden className="absolute -right-16 -top-10 h-64 w-64 rounded-full border-[28px] border-gold/15" />
         <div className="mx-auto max-w-3xl px-4 sm:px-6 pt-10 pb-14 relative">
-          <p className="eyebrow text-gold">National Police Cadet Corps</p>
+          <div className="flex items-center gap-3">
+            <Logo size={44} className="ring-1 ring-white/15" />
+            <p className="eyebrow text-gold">National Police Cadet Corps</p>
+          </div>
           <h1 className="display uppercase text-[3.2rem] sm:text-6xl mt-5">
             Leadership &amp;<br />Mentoring Skills
           </h1>
