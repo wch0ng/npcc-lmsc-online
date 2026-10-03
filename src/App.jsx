@@ -16,6 +16,9 @@ import VakResult from './pages/vak/VakResult'
 import CommIntro from './pages/comm/CommIntro'
 import CommRun from './pages/comm/CommRun'
 import CommResult from './pages/comm/CommResult'
+import GoalsHome from './pages/goals/GoalsHome'
+import GoalBuilder from './pages/goals/GoalBuilder'
+import GoalDetail from './pages/goals/GoalDetail'
 
 export default function App() {
   return (
@@ -38,6 +41,10 @@ export default function App() {
             <Route path="activities/comm-test" element={<CommIntro />} />
             <Route path="activities/comm-test/run" element={<CommRun />} />
             <Route path="activities/comm-test/result" element={<CommResult />} />
+            <Route path="activities/goals" element={<GoalsHome />} />
+            <Route path="activities/goals/new" element={<GoalBuilder />} />
+            <Route path="activities/goals/:id" element={<GoalDetail />} />
+            <Route path="activities/goals/:id/edit" element={<GoalBuilder />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

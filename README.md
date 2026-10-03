@@ -7,6 +7,7 @@ Interactive companion for the NPCC Leadership & Mentoring Skills Course (React +
 - **Practice** — 39 flash cards, a 25-question quiz bank (multiple choice / ordering / matching / sorting), and the course scenarios (leadership situations, debriefs, self-reflection).
 - **Activities**
   - **VAK Learning Styles Questionnaire** — all 30 questions, tally of A/B/C answers, V/A/K breakdown and feedback from the VAK Guide.
+  - **SMART Goal Setting** — step-by-step builder for a personal goal and a squad goal (with plan & roles), status, progress check-ins and copy-to-share.
   - **2½ Minutes Test (Are you a good receiver?)** — timed digital worksheet with pen, write and tick tools; reveals the trick, scores the attempt, and runs a What / So What / Now What debrief.
 
 Progress is stored in the browser (localStorage) on each device; there is no server.

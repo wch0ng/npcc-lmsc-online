@@ -10,6 +10,7 @@ const defaults = () => ({
   scenarios: {},   // { [scenarioId]: { notes: {[promptId]: string}, done } }
   vak: [],         // [{ date, answers: ['a'|'b'|'c' …30], counts: {v,a,k} }] newest first
   commtest: [],    // [{ date, …result }] newest first
+  goals: [],       // [{ id, type, title, squad, s, m, a, r, t, deadline, roles, status, checkins: [{date, note}], created, updated }]
 })
 
 function load() {
@@ -56,6 +57,12 @@ function useProgressState() {
     saveCommDebrief: useCallback((index, debrief) => update((p) => ({
       ...p, commtest: p.commtest.map((r, i) => (i === index ? { ...r, debrief } : r)),
     })), [update]),
+    saveGoal: useCallback((goal) => update((p) => {
+      const g = { ...goal, updated: new Date().toISOString() }
+      const exists = p.goals.some((x) => x.id === g.id)
+      return { ...p, goals: exists ? p.goals.map((x) => (x.id === g.id ? g : x)) : [g, ...p.goals] }
+    }), [update]),
+    deleteGoal: useCallback((id) => update((p) => ({ ...p, goals: p.goals.filter((g) => g.id !== id) })), [update]),
     resetAll: useCallback(() => { const fresh = defaults(); save(fresh); setProgress(fresh) }, []),
   }
   return api

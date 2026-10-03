@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Timer, BookOpen, Layers, ListChecks } from 'lucide-react'
+import { ArrowRight, Timer, BookOpen, Layers, ListChecks, Target } from 'lucide-react'
 import { VAK_THEME } from '../components/vakTheme'
 import { useProgress } from '../hooks/useProgress'
 import { MODULES } from '../data/modules'
@@ -17,6 +17,7 @@ export default function Home() {
   const vak = progress.vak[0]
   const vakProfile = vak && analyseVak(vak.counts)
   const comm = progress.commtest[0]
+  const goals = progress.goals ?? []
 
   return (
     <div>
@@ -31,7 +32,7 @@ export default function Home() {
           <h1 className="display uppercase text-[3.2rem] sm:text-6xl mt-5">
             Leadership &amp;<br />Mentoring Skills
           </h1>
-          <p className="mt-3 text-on-navy/75 max-w-md">Your course companion: seven modules, practice drills, and two hands-on activities.</p>
+          <p className="mt-3 text-on-navy/75 max-w-md">Your course companion: seven modules, practice drills, and three hands-on activities.</p>
           <Link to={`/learn/${next.id}`} className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gold text-navy font-semibold px-5 py-3 active:scale-[0.98] transition">
             {read === 0 ? 'Start module 1' : read === MODULES.length ? 'Review modules' : `Continue: ${next.title}`} <ArrowRight size={18} />
           </Link>
@@ -76,6 +77,15 @@ export default function Home() {
               <p className="text-sm text-muted mt-1">Are you a good receiver? A timed communication challenge.</p>
             )}
             <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink">{comm ? 'Try again' : 'Start'} <ArrowRight size={16} className="group-hover:translate-x-0.5 transition" /></span>
+          </Link>
+
+          <Link to="/activities/goals" className="card p-5 group hover:-translate-y-0.5 transition sm:col-span-2">
+            <span className="grid place-items-center h-9 w-9 rounded-lg bg-gold-soft text-ink"><Target size={18} /></span>
+            <h3 className="display text-2xl uppercase mt-4">SMART Goal Setting</h3>
+            <p className="text-sm text-muted mt-1">
+              {goals.length ? <>You have <b className="text-ink">{goals.length}</b> goal{goals.length > 1 ? 's' : ''}, with <b className="text-ink">{goals.filter((g) => g.status === 'achieved').length}</b> achieved.</> : 'Set a personal goal and a squad goal, the SMART way.'}
+            </p>
+            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink">{goals.length ? 'View my goals' : 'Start'} <ArrowRight size={16} className="group-hover:translate-x-0.5 transition" /></span>
           </Link>
         </div>
 

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Timer } from 'lucide-react'
+import { ArrowRight, Timer, Target } from 'lucide-react'
+import { SMART_STEPS } from '../data/goals'
 import { useProgress } from '../hooks/useProgress'
 import { VAK_STYLES, analyseVak } from '../data/vak'
 import { VAK_THEME } from '../components/vakTheme'
@@ -10,6 +11,7 @@ export default function Activities() {
   const { progress } = useProgress()
   const vak = progress.vak[0]
   const comm = progress.commtest[0]
+  const goals = progress.goals ?? []
 
   return (
     <Page>
@@ -55,6 +57,25 @@ export default function Activities() {
             <p className="text-muted mt-1">A timed test paper you can write, draw and tick on, followed by a guided debrief.</p>
             <div className="mt-4 flex items-center justify-between">
               <span className="text-sm text-faint">{comm ? `${progress.commtest.length} attempt${progress.commtest.length > 1 ? 's' : ''}` : 'Not attempted yet'}</span>
+              <ArrowRight className="group-hover:translate-x-1 transition" />
+            </div>
+          </div>
+        </Link>
+        <Link to="/activities/goals" className="card block overflow-hidden group">
+          <div className="h-24 bg-gold-soft grid grid-cols-5">
+            {SMART_STEPS.map((s) => (
+              <div key={s.key} className="flex flex-col items-center justify-center">
+                <span className="display text-4xl text-ink leading-none">{s.letter}</span>
+                <span className="text-[10px] font-semibold text-ink/60 mt-0.5">{s.name}</span>
+              </div>
+            ))}
+          </div>
+          <div className="p-5">
+            <p className="eyebrow text-gold">Basic Teamwork · 10 min</p>
+            <h2 className="display uppercase text-3xl mt-1">SMART goal setting</h2>
+            <p className="text-muted mt-1">Build a personal goal and a squad goal step by step, then track progress with check-ins.</p>
+            <div className="mt-4 flex items-center justify-between">
+              <span className="text-sm text-faint flex items-center gap-1.5"><Target size={16} />{goals.length ? `${goals.length} goal${goals.length > 1 ? 's' : ''} · ${goals.filter((g) => g.status === 'achieved').length} achieved` : 'No goals yet'}</span>
               <ArrowRight className="group-hover:translate-x-1 transition" />
             </div>
           </div>

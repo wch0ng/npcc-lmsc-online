@@ -114,6 +114,7 @@ export const MODULES = [
     tagline: 'Team stages and SMART goals',
     icon: 'Users',
     objectives: ['Understand why we work in teams and how teams develop'],
+    activity: { to: '/activities/goals', label: 'Set your SMART goals' },
     sections: [
       { type: 'text', heading: 'What is a team?', text: 'A group of people working together to achieve a common goal.' },
       {
