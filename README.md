@@ -21,4 +21,6 @@ npm run deploy   # publish dist/ to GitHub Pages (needs a GitHub remote)
 ```
 The build uses a relative base and hash routing, so it works from any hosting path.
 
+Live at https://lmsc2026.hsnpcc.com (custom domain set by `public/CNAME`, which is copied into every build so deploys keep the domain).
+
 Source materials live in `reference/` (git-ignored, not published).
