@@ -19,6 +19,9 @@ import CommResult from './pages/comm/CommResult'
 import GoalsHome from './pages/goals/GoalsHome'
 import GoalBuilder from './pages/goals/GoalBuilder'
 import GoalDetail from './pages/goals/GoalDetail'
+import FinalIntro from './pages/final/FinalIntro'
+import FinalRun from './pages/final/FinalRun'
+import FinalResult from './pages/final/FinalResult'
 
 export default function App() {
   return (
@@ -45,6 +48,9 @@ export default function App() {
             <Route path="activities/goals/new" element={<GoalBuilder />} />
             <Route path="activities/goals/:id" element={<GoalDetail />} />
             <Route path="activities/goals/:id/edit" element={<GoalBuilder />} />
+            <Route path="final" element={<FinalIntro />} />
+            <Route path="final/run" element={<FinalRun />} />
+            <Route path="final/result" element={<FinalResult />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

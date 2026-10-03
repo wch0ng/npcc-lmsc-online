@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Timer, BookOpen, Layers, ListChecks, Target } from 'lucide-react'
+import { ArrowRight, Timer, BookOpen, Layers, ListChecks, Target, Award } from 'lucide-react'
 import { VAK_THEME } from '../components/vakTheme'
 import { useProgress } from '../hooks/useProgress'
 import Logo from '../components/Logo'
@@ -88,6 +88,16 @@ export default function Home() {
             <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink">{goals.length ? 'View my goals' : 'Start'} <ArrowRight size={16} className="group-hover:translate-x-0.5 transition" /></span>
           </Link>
         </div>
+
+        {/* Final quiz */}
+        <Link to="/final" className="mt-4 card flex items-center gap-4 p-5 group bg-navy! border-navy! text-on-navy">
+          <span className="grid place-items-center h-11 w-11 shrink-0 rounded-xl bg-gold text-navy"><Award size={22} /></span>
+          <span className="flex-1">
+            <span className="block display uppercase text-2xl leading-none">Final Quiz</span>
+            <span className="block text-sm text-on-navy/75 mt-1">{(progress.final ?? []).length ? `Latest: ${progress.final[0].score}/${progress.final[0].total} · screenshot your result to submit` : 'When you’ve completed the course, take the final quiz and submit a screenshot.'}</span>
+          </span>
+          <ArrowRight className="group-hover:translate-x-1 transition shrink-0" />
+        </Link>
 
         {/* Module list */}
         <SectionLabel className="mt-9">Course modules</SectionLabel>

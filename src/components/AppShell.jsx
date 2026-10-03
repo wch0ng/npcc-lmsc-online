@@ -14,7 +14,7 @@ export default function AppShell() {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
   // Full-screen experiences hide the tab bar so nothing competes with them.
-  const immersive = /^\/activities\/(vak|comm-test)\/run/.test(pathname)
+  const immersive = /^\/activities\/(vak|comm-test)\/run/.test(pathname) || /^\/final\/(run|result)/.test(pathname)
 
   return (
     <div className="min-h-dvh flex flex-col">

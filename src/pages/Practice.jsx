@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { Layers, ListChecks, Theater, ArrowRight } from 'lucide-react'
+import { Layers, ListChecks, Theater, ArrowRight, Award } from 'lucide-react'
+import { FINAL_LENGTH } from '../data/final'
 import { useProgress } from '../hooks/useProgress'
 import { FLASHCARDS } from '../data/flashcards'
 import { QUIZ } from '../data/quiz'
@@ -39,6 +40,19 @@ export default function Practice() {
           </Link>
         ))}
       </div>
+
+      <Link to="/final" className="mt-6 card block overflow-hidden group bg-navy! border-navy! text-on-navy">
+        <div className="p-5 flex gap-4 items-center">
+          <span className="grid place-items-center h-12 w-12 shrink-0 rounded-xl bg-gold text-navy"><Award size={24} /></span>
+          <div className="flex-1">
+            <p className="eyebrow text-gold">Assessment</p>
+            <h2 className="display uppercase text-3xl leading-none mt-0.5">Final Quiz</h2>
+            <p className="text-sm text-on-navy/75 mt-1">{FINAL_LENGTH} questions. Your result shows your full course completion. Screenshot it for submission.</p>
+            {(progress.final ?? []).length > 0 && <p className="text-sm font-semibold text-gold mt-2">Latest: {progress.final[0].score}/{progress.final[0].total} · attempt {progress.final[0].attempt}</p>}
+          </div>
+          <ArrowRight className="group-hover:translate-x-1 transition shrink-0" />
+        </div>
+      </Link>
     </Page>
   )
 }

@@ -10,6 +10,8 @@ const defaults = () => ({
   scenarios: {},   // { [scenarioId]: { notes: {[promptId]: string}, done } }
   vak: [],         // [{ date, answers: ['a'|'b'|'c' …30], counts: {v,a,k} }] newest first
   commtest: [],    // [{ date, …result }] newest first
+  final: [],       // [{ date, name, squad, score, total, answers: [{id, ok}], snapshot }] newest first
+  profile: {},     // { name, squad } remembered for the final quiz
   goals: [],       // [{ id, type, title, squad, s, m, a, r, t, deadline, roles, status, checkins: [{date, note}], created, updated }]
 })
 
@@ -63,6 +65,11 @@ function useProgressState() {
       return { ...p, goals: exists ? p.goals.map((x) => (x.id === g.id ? g : x)) : [g, ...p.goals] }
     }), [update]),
     deleteGoal: useCallback((id) => update((p) => ({ ...p, goals: p.goals.filter((g) => g.id !== id) })), [update]),
+    recordFinal: useCallback((attempt) => update((p) => ({
+      ...p,
+      profile: { name: attempt.name, squad: attempt.squad },
+      final: [{ date: new Date().toISOString(), attempt: (p.final?.[0]?.attempt ?? 0) + 1, ...attempt }, ...(p.final ?? [])].slice(0, 20),
+    })), [update]),
     resetAll: useCallback(() => { const fresh = defaults(); save(fresh); setProgress(fresh) }, []),
   }
   return api

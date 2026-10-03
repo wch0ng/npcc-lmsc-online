@@ -9,7 +9,7 @@ import { Button } from '../../components/ui'
 import { scoreCommTest } from './scoring'
 
 const TOOLS = [
-  { id: 'read', label: 'Read', icon: Hand, hint: 'Scroll the paper. Tap a number to tick it off.' },
+  { id: 'read', label: 'Read', icon: Hand, hint: 'Scroll the paper. Tap a number to tick it off. You can undo only once.' },
   { id: 'pen', label: 'Pen', icon: PenLine, hint: 'Draw anywhere on the paper.' },
   { id: 'text', label: 'Type', icon: Type, hint: 'Tap anywhere on the paper to type.' },
 ]
@@ -23,6 +23,7 @@ export default function CommRun() {
   const [texts, setTexts] = useState([])
   const [ticks, setTicks] = useState([])
   const [history, setHistory] = useState([]) // for undo: 'stroke' | 'text' | ['tick', n]
+  const [undoUsed, setUndoUsed] = useState(false) // only one undo per attempt
   const [left, setLeft] = useState(COMM_TEST.seconds)
 
   const startAt = useRef(0)
@@ -77,14 +78,16 @@ export default function CommRun() {
 
   function addStroke(s) { acted(); setStrokes((x) => [...x, s]); setHistory((h) => [...h, 'stroke']) }
   function addText(t) { acted(); setTexts((x) => [...x, t]); setHistory((h) => [...h, 'text']) }
-  function toggleTick(n) { acted(); setTicks((x) => (x.includes(n) ? x.filter((k) => k !== n) : [...x, n])); setHistory((h) => [...h, ['tick', n]]) }
+  // Ticks are one-way; the single undo is the only way to take one back.
+  function toggleTick(n) { if (ticks.includes(n)) return; acted(); setTicks((x) => [...x, n]); setHistory((h) => [...h, ['tick', n]]) }
   function undo() {
     const last = history[history.length - 1]
-    if (!last) return
+    if (!last || undoUsed) return
+    setUndoUsed(true)
     setHistory((h) => h.slice(0, -1))
     if (last === 'stroke') setStrokes((x) => x.slice(0, -1))
     else if (last === 'text') setTexts((x) => x.slice(0, -1))
-    else setTicks((x) => (x.includes(last[1]) ? x.filter((k) => k !== last[1]) : [...x, last[1]]))
+    else setTicks((x) => x.filter((k) => k !== last[1]))
   }
 
   const mm = Math.floor(left / 60)
@@ -124,8 +127,8 @@ export default function CommRun() {
                 <Icon size={19} /> {label}
               </button>
             ))}
-            <button onClick={undo} disabled={!history.length} className="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-[11px] font-semibold text-muted disabled:opacity-30">
-              <Undo2 size={19} /> Undo
+            <button onClick={undo} disabled={!history.length || undoUsed} title={undoUsed ? 'Undo already used' : 'You can undo once'} className="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-[11px] font-semibold text-muted disabled:opacity-30">
+              <Undo2 size={19} /> {undoUsed ? 'Used' : 'Undo ×1'}
             </button>
             <button onClick={() => handIn(false)} className="flex flex-col items-center gap-0.5 rounded-xl px-3 py-2 text-[11px] font-bold bg-gold text-navy">
               <Send size={19} /> Hand in
