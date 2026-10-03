@@ -5,7 +5,6 @@ import { useProgress } from '../hooks/useProgress'
 import { MODULES } from '../data/modules'
 import { FLASHCARDS } from '../data/flashcards'
 import { VAK_STYLES, analyseVak } from '../data/vak'
-import Crest from '../components/Crest'
 import { Page, Ring, SectionLabel, ConfirmButton } from '../components/ui'
 
 export default function Home() {
@@ -25,10 +24,7 @@ export default function Home() {
       <section className="bg-navy text-on-navy safe-top relative overflow-hidden">
         <div aria-hidden className="absolute -right-16 -top-10 h-64 w-64 rounded-full border-[28px] border-gold/15" />
         <div className="mx-auto max-w-3xl px-4 sm:px-6 pt-10 pb-14 relative">
-          <div className="flex items-center gap-3">
-            <Crest size={38} />
-            <p className="eyebrow text-gold">National Police Cadet Corps</p>
-          </div>
+          <p className="eyebrow text-gold">National Police Cadet Corps</p>
           <h1 className="display uppercase text-[3.2rem] sm:text-6xl mt-5">
             Leadership &amp;<br />Mentoring Skills
           </h1>

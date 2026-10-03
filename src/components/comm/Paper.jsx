@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import '@fontsource/caveat/latin-600.css'
 import { COMM_TEST } from '../../data/commtest'
-import Crest from '../Crest'
 
 const INK = '#1f47b8'
 const HAND = '"Caveat", "Bradley Hand", "Segoe Print", cursive'
@@ -77,8 +76,7 @@ export default function Paper({
     >
       {/* Top band: a blank strip whose corners are free to write in */}
       <div ref={bandRef} aria-hidden className="h-[clamp(4.5rem,16vw,6.5rem)]" />
-      <div className="flex items-center justify-center gap-2 sm:gap-3 px-[4%]">
-        <span data-logo><Crest size={30} /></span>
+      <div className="flex items-center justify-center px-[4%]">
         <div className="text-center leading-tight">
           <p className="text-[10px] sm:text-xs font-bold tracking-wide">NATIONAL POLICE CADET CORPS</p>
           <p className="text-[10px] sm:text-xs underline">Leadership &amp; Mentoring Skills Course</p>
