@@ -5,14 +5,16 @@ export const MODULES = [
   {
     id: 'leadership',
     num: 1,
-    title: 'Leadership',
-    tagline: 'Styles of leadership and when to use them',
+    title: 'Leadership & Mentoring',
+    tagline: 'Leadership styles, and how to be an effective mentor',
     icon: 'Flag',
     objectives: [
       'Discover more about the different leadership styles',
       'Understand how to be an effective and nurturing leader',
+      'Have a basic understanding of mentoring',
     ],
     sections: [
+      { type: 'part', label: 'Part 1', title: 'Leadership' },
       { type: 'quote', text: 'The task of the leader is to get his people from where they are to where they have not been.', by: 'Henry Kissinger, 56th US Secretary of State' },
       { type: 'text', heading: 'Definition of leadership', text: 'Leadership is a process whereby an individual influences a group of individuals to achieve a common goal.' },
       {
@@ -59,16 +61,7 @@ export const MODULES = [
           'A leader is a role model, responsible for what is said, including posts. Think carefully before posting.',
         ],
       },
-    ],
-  },
-  {
-    id: 'mentoring',
-    num: 2,
-    title: 'Mentoring',
-    tagline: 'What makes an effective mentor',
-    icon: 'HeartHandshake',
-    objectives: ['Have a basic understanding of mentoring'],
-    sections: [
+      { type: 'part', label: 'Part 2', title: 'Mentoring' },
       {
         type: 'acrostic',
         heading: 'Being an effective MENTOR',
@@ -109,7 +102,7 @@ export const MODULES = [
   },
   {
     id: 'teamwork',
-    num: 3,
+    num: 2,
     title: 'Basic Teamwork',
     tagline: 'Team stages and SMART goals',
     icon: 'Users',
@@ -160,7 +153,7 @@ export const MODULES = [
   },
   {
     id: 'communication',
-    num: 4,
+    num: 3,
     title: 'Effective Communication',
     tagline: 'Sending, receiving and understanding',
     icon: 'MessagesSquare',
@@ -233,7 +226,7 @@ export const MODULES = [
   },
   {
     id: 'reflection',
-    num: 5,
+    num: 4,
     title: 'Reflection & Debriefing',
     tagline: 'Learning from experience — for others and for self',
     icon: 'RefreshCcw',
@@ -270,7 +263,7 @@ export const MODULES = [
   },
   {
     id: 'moi',
-    num: 6,
+    num: 5,
     title: 'Method of Instruction',
     tagline: 'The 5 steps of teaching a lesson',
     icon: 'Presentation',
@@ -301,7 +294,7 @@ export const MODULES = [
   },
   {
     id: 'lesson-planning',
-    num: 7,
+    num: 6,
     title: 'Lesson Planning',
     tagline: 'Planning so anyone can conduct the lesson',
     icon: 'ClipboardList',

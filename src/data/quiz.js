@@ -51,14 +51,14 @@ export const QUIZ = [
     explanation: 'These are the four types of leadership covered in the Leadership module.',
   },
   {
-    id: 'q6', module: 'mentoring', type: 'mcq',
+    id: 'q6', module: 'leadership', type: 'mcq',
     question: 'In MENTOR, what does the “R” stand for?',
     options: ['Respects authority', 'Responds to the mentee’s needs', 'Reports progress', 'Reviews performance'],
     answer: 'Responds to the mentee’s needs',
     explanation: 'M-E-N-T-O-R: Manages the relationship, Encourages, Nurtures, Teaches, Offers mutual respect, Responds to the mentee’s needs.',
   },
   {
-    id: 'q7', module: 'mentoring', type: 'mcq',
+    id: 'q7', module: 'leadership', type: 'mcq',
     question: 'Your mentee is stuck on a problem. As a mentor you should:',
     options: ['Give them the solution straight away', 'Report it to their CI', 'Explore options together with them', 'Let them figure it out alone'],
     answer: 'Explore options together with them',

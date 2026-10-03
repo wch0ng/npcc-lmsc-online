@@ -13,7 +13,7 @@ export default function Practice() {
   const scen = ALL_SCENARIOS.filter((s) => progress.scenarios[s.id]?.done).length
 
   const items = [
-    { to: '/practice/flashcards', icon: Layers, title: 'Flash cards', text: `${FLASHCARDS.length} cards across all seven modules. Flip, then swipe.`, value: known, max: FLASHCARDS.length, meta: `${known}/${FLASHCARDS.length} known` },
+    { to: '/practice/flashcards', icon: Layers, title: 'Flash cards', text: `${FLASHCARDS.length} cards across all six modules. Flip, then swipe.`, value: known, max: FLASHCARDS.length, meta: `${known}/${FLASHCARDS.length} known` },
     { to: '/practice/quiz', icon: ListChecks, title: 'Quiz', text: `10 random questions from a bank of ${QUIZ.length}: multiple choice, ordering, matching and sorting.`, value: best, max: 100, meta: progress.quiz.length ? `Best ${best}%` : 'Not attempted' },
     { to: '/practice/scenarios', icon: Theater, title: 'Scenarios', text: 'Leadership situations, debriefs and self-reflection from the course.', value: scen, max: ALL_SCENARIOS.length, meta: `${scen}/${ALL_SCENARIOS.length} done` },
   ]

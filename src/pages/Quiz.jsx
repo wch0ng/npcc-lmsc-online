@@ -93,7 +93,7 @@ export default function Quiz() {
   const best = progress.quiz.length ? Math.max(...progress.quiz.map((r) => Math.round((r.score / r.total) * 100))) : null
   return (
     <Page>
-      <PageHeader back="/practice" eyebrow="Practice" title="Quiz" subtitle={`${LEN} random questions from a bank of ${QUIZ.length}, covering all seven modules.`} />
+      <PageHeader back="/practice" eyebrow="Practice" title="Quiz" subtitle={`${LEN} random questions from a bank of ${QUIZ.length}, covering all six modules.`} />
       <div className="grid grid-cols-2 gap-3">
         {Object.values(TYPES).map((t) => <div key={t.label} className="card px-4 py-3 text-sm font-semibold">{t.label}</div>)}
       </div>

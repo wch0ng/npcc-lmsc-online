@@ -3,7 +3,7 @@
 Interactive companion for the NPCC Leadership & Mentoring Skills Course (React + Vite + Tailwind, installable PWA).
 
 ## What's inside
-- **Learn** — 7 modules condensed from the course deck: Leadership, Mentoring, Basic Teamwork, Effective Communication, Reflection & Debriefing, Method of Instruction, Lesson Planning.
+- **Learn** — 6 modules condensed from the course deck: Leadership & Mentoring, Basic Teamwork, Effective Communication, Reflection & Debriefing, Method of Instruction, Lesson Planning.
 - **Practice** — 39 flash cards, a 25-question quiz bank (multiple choice / ordering / matching / sorting), and the course scenarios (leadership situations, debriefs, self-reflection).
 - **Activities**
   - **VAK Learning Styles Questionnaire** — all 30 questions, tally of A/B/C answers, V/A/K breakdown and feedback from the VAK Guide.

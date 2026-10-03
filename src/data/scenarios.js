@@ -89,7 +89,7 @@ export const SCENARIO_GROUPS = [
         id: 'sr1', title: 'Now you try · Your LMSC journey',
         text: 'We have learned more about leadership and mentoring skills throughout LMSC. Based on what we have learned, do a self-reflection and draw out as many learning points as possible across all the modules.',
         prompts: WSW,
-        consider: ['Go module by module: Leadership, Mentoring, Teamwork, Communication, Reflection, MOI, Lesson Planning.', 'Include your VAK learning style and your 2½ Minutes Test result.', 'Write at least one Now-What action you can start at the next training.'],
+        consider: ['Go module by module: Leadership & Mentoring, Teamwork, Communication, Reflection, MOI, Lesson Planning.', 'Include your VAK learning style and your 2½ Minutes Test result.', 'Write at least one Now-What action you can start at the next training.'],
       },
     ],
   },

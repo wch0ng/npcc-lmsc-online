@@ -28,7 +28,7 @@ export default function Home() {
           <h1 className="display uppercase text-[3.2rem] sm:text-6xl mt-5">
             Leadership &amp;<br />Mentoring Skills
           </h1>
-          <p className="mt-3 text-on-navy/75 max-w-md">Your course companion: seven modules, practice drills, and three hands-on activities.</p>
+          <p className="mt-3 text-on-navy/75 max-w-md">Your course companion: six modules, practice drills, and three hands-on activities.</p>
           <Link to={`/learn/${next.id}`} className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gold text-navy font-semibold px-5 py-3 active:scale-[0.98] transition">
             {read === 0 ? 'Start module 1' : read === MODULES.length ? 'Review modules' : `Continue: ${next.title}`} <ArrowRight size={18} />
           </Link>

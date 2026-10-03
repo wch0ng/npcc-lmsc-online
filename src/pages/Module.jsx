@@ -60,6 +60,14 @@ function H({ children }) {
 
 function Block({ s }) {
   switch (s.type) {
+    case 'part':
+      return (
+        <div className="flex items-center gap-3 pt-4">
+          <span className="eyebrow text-gold">{s.label}</span>
+          <h2 className="display uppercase text-3xl">{s.title}</h2>
+          <span className="flex-1 h-px bg-line" />
+        </div>
+      )
     case 'quote':
       return (
         <figure className="px-1 py-2">
