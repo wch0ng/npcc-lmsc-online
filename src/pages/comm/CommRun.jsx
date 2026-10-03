@@ -11,7 +11,7 @@ import { scoreCommTest } from './scoring'
 const TOOLS = [
   { id: 'read', label: 'Read', icon: Hand, hint: 'Scroll the paper. Tap a number to tick it off.' },
   { id: 'pen', label: 'Pen', icon: PenLine, hint: 'Draw anywhere on the paper.' },
-  { id: 'text', label: 'Write', icon: Type, hint: 'Tap anywhere on the paper to write.' },
+  { id: 'text', label: 'Type', icon: Type, hint: 'Tap anywhere on the paper to type.' },
 ]
 
 export default function CommRun() {

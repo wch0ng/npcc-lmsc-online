@@ -133,7 +133,7 @@ export default function Paper({
           onKeyDown={(e) => { if (e.key === 'Enter') commitText() }}
           className="absolute -translate-y-1/2 bg-[#fff8d6] outline-none border-b-2 px-1 rounded-sm"
           style={{ left: editing.x * w, top: editing.y * w, color: INK, fontFamily: HAND, fontSize: Math.max(18, w * 0.038), borderColor: INK, width: Math.min(w * 0.42, Math.max(120, w * (1 - editing.x) - 8)) }}
-          placeholder="write…"
+          placeholder="type…"
         />
       )}
     </div>

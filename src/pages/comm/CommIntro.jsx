@@ -12,7 +12,7 @@ export default function CommIntro() {
 
       <div className="card p-5 space-y-4">
         <Row icon={Timer} title="2 minutes 30 seconds" text="The clock starts when you turn the paper over." />
-        <Row icon={PenLine} title="Pen, Write and Read tools" text="Draw or write on the paper just like a real worksheet. Tap an instruction’s number to tick it off." />
+        <Row icon={PenLine} title="Pen, Type and Read tools" text="Draw or type on the paper just like a real worksheet. Tap an instruction’s number to tick it off." />
         <Row icon={Megaphone} title="Some instructions ask you to speak or move" text="If you’re doing this in class, do them for real, then tick them off on the paper." />
       </div>
 
