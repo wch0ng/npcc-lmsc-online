@@ -1,16 +1,23 @@
-# React + Vite
+# NPCC LMSC — v2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interactive companion for the NPCC Leadership & Mentoring Skills Course (React + Vite + Tailwind, installable PWA).
 
-Currently, two official plugins are available:
+## What's inside
+- **Learn** — 7 modules condensed from the course deck: Leadership, Mentoring, Basic Teamwork, Effective Communication, Reflection & Debriefing, Method of Instruction, Lesson Planning.
+- **Practice** — 39 flash cards, a 25-question quiz bank (multiple choice / ordering / matching / sorting), and the course scenarios (leadership situations, debriefs, self-reflection).
+- **Activities**
+  - **VAK Learning Styles Questionnaire** — all 30 questions, tally of A/B/C answers, V/A/K breakdown and feedback from the VAK Guide.
+  - **2½ Minutes Test (Are you a good receiver?)** — timed digital worksheet with pen, write and tick tools; reveals the trick, scores the attempt, and runs a What / So What / Now What debrief.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Progress is stored in the browser (localStorage) on each device; there is no server.
 
-## React Compiler
+## Develop
+```sh
+npm install
+npm run dev      # local dev server
+npm run build    # production build in dist/
+npm run deploy   # publish dist/ to GitHub Pages (needs a GitHub remote)
+```
+The build uses a relative base and hash routing, so it works from any hosting path.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Source materials live in `reference/` (git-ignored, not published).

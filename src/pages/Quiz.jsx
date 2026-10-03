@@ -1,218 +1,109 @@
-import { useState, useCallback } from 'react'
-import Header from '../components/layout/Header'
-import QuizTimer from '../components/quiz/QuizTimer'
-import QuizExplanation from '../components/quiz/QuizExplanation'
-import MCQ from '../components/quiz/types/MCQ'
-import SortOrder from '../components/quiz/types/SortOrder'
-import Matching from '../components/quiz/types/Matching'
-import DragDrop from '../components/quiz/types/DragDrop'
-import { useTimer } from '../hooks/useTimer'
-import allQuestions from '../data/quiz.json'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight, CheckCircle2, XCircle, X } from 'lucide-react'
+import { QUIZ } from '../data/quiz'
+import { moduleById } from '../data/modules'
+import { useProgress } from '../hooks/useProgress'
+import { TYPES } from '../components/quiz/types'
+import { Page, PageHeader, Button, Bar, SectionLabel } from '../components/ui'
 
-function shuffle(arr) {
-  return [...arr].sort(() => Math.random() - 0.5)
+const LEN = 10
+
+function pick() {
+  const x = [...QUIZ]
+  for (let i = x.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [x[i], x[j]] = [x[j], x[i]] }
+  return x.slice(0, LEN)
 }
 
-function checkCorrect(question, answer) {
-  if (question.type === 'mcq') return answer === question.answer
-  if (question.type === 'sort_order') return answer === question.answer[0]
-  if (question.type === 'matching') return answer === question.pairs[0].term
-  if (question.type === 'drag_drop') return answer === question.items[0].label
-  return false
-}
+export default function Quiz() {
+  const { progress, recordQuiz } = useProgress()
+  const [qs, setQs] = useState(null)
+  const [i, setI] = useState(0)
+  const [results, setResults] = useState([])
+  const [locked, setLocked] = useState(false)
 
-const TYPE_LABELS = {
-  mcq: 'Multiple Choice',
-  sort_order: 'Sort in Order',
-  matching: 'Matching',
-  drag_drop: 'Drag & Drop',
-}
-
-// ── Timer display (needs its own component so the hook re-mounts on new question) ──
-function QuestionTimer({ timeLimit, onExpire, stopped }) {
-  const { timeLeft } = useTimer(timeLimit, stopped ? undefined : onExpire)
-  return <QuizTimer timeLeft={stopped ? 0 : timeLeft} total={timeLimit} />
-}
-
-// ── Score screen ──
-function ScoreScreen({ questions, answers, onRestart }) {
-  const score = answers.filter((a) => a.correct).length
-  const pct = Math.round((score / questions.length) * 100)
-
-  return (
-    <div>
-      <Header title="Results" />
-      <div className="p-4 space-y-5">
-        <div className="bg-[#1e3a5f] rounded-2xl p-6 text-center text-white">
-          <p className="text-5xl font-bold">{pct}%</p>
-          <p className="text-blue-200 mt-1">{score} out of {questions.length} correct</p>
-          <p className="text-sm mt-2 text-[#f0c94d] font-semibold">
-            {pct >= 80 ? 'Excellent!' : pct >= 60 ? 'Good effort!' : 'Keep practising!'}
-          </p>
-        </div>
-
-        <div className="space-y-2">
-          {questions.map((q, i) => (
-            <div
-              key={q.id}
-              className={`flex items-start gap-3 bg-white rounded-xl p-3 shadow-sm border-l-4 ${
-                answers[i]?.correct ? 'border-green-400' : 'border-red-400'
-              }`}
-            >
-              <span>{answers[i]?.correct ? '✅' : '❌'}</span>
-              <p className="text-sm text-gray-700 flex-1">{q.question}</p>
-            </div>
-          ))}
-        </div>
-
-        <button
-          onClick={onRestart}
-          className="w-full py-4 rounded-2xl bg-[#1e3a5f] text-white font-bold"
-        >
-          Try Again
-        </button>
-      </div>
-    </div>
-  )
-}
-
-// ── Active quiz session ──
-function QuizSession({ questions, onComplete }) {
-  const [current, setCurrent] = useState(0)
-  const [answers, setAnswers] = useState([])
-  const [answered, setAnswered] = useState(null)
-  const [timerKey, setTimerKey] = useState(0)
-
-  const question = questions[current]
-  const isLast = current + 1 >= questions.length
-
-  const handleAnswer = useCallback((value) => {
-    if (answered) return
-    const correct = checkCorrect(question, value)
-    setAnswered({ value, correct })
-  }, [answered, question])
-
-  const handleExpire = useCallback(() => {
-    if (!answered) handleAnswer('__timeout__')
-  }, [answered, handleAnswer])
-
-  function handleNext() {
-    const newAnswers = [...answers, answered]
-    if (isLast) {
-      onComplete(newAnswers)
-      return
-    }
-    setAnswers(newAnswers)
-    setCurrent((c) => c + 1)
-    setAnswered(null)
-    setTimerKey((k) => k + 1)
+  function start() { setQs(pick()); setI(0); setResults([]); setLocked(false) }
+  function submit(ok) { setResults((r) => [...r, ok]); setLocked(true) }
+  function next() {
+    if (i + 1 >= qs.length) { recordQuiz(results.filter(Boolean).length, qs.length); setI(qs.length); return }
+    setI(i + 1); setLocked(false)
   }
 
-  const QuestionComponent = { mcq: MCQ, sort_order: SortOrder, matching: Matching, drag_drop: DragDrop }[question.type]
-
-  return (
-    <div>
-      <Header title="Quiz" subtitle={`Question ${current + 1} of ${questions.length}`} />
-      <div className="p-4 space-y-4">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold text-[#c9a227] uppercase tracking-wider bg-amber-50 px-2 py-1 rounded-full">
-            {TYPE_LABELS[question.type]}
-          </span>
-          <QuestionTimer
-            key={timerKey}
-            timeLimit={question.timeLimit}
-            onExpire={handleExpire}
-            stopped={!!answered}
-          />
-        </div>
-
-        <p className="text-base font-semibold text-gray-800 leading-snug">{question.question}</p>
-
-        <QuestionComponent question={question} onAnswer={handleAnswer} disabled={!!answered} />
-
-        {answered && (
-          <QuizExplanation
-            correct={answered.correct}
-            explanation={answered.value === '__timeout__'
-              ? `Time's up! ${question.explanation}`
-              : question.explanation}
-            onNext={handleNext}
-            isLast={isLast}
-          />
-        )}
-      </div>
-    </div>
-  )
-}
-
-// ── Top-level Quiz page ──
-export default function Quiz({ progressApi }) {
-  const { recordQuizResult, progress } = progressApi
-  const [questions, setQuestions] = useState(null)
-  const [finalAnswers, setFinalAnswers] = useState(null)
-
-  function startQuiz() {
-    setQuestions(shuffle(allQuestions).slice(0, 10))
-    setFinalAnswers(null)
-  }
-
-  function handleComplete(answers) {
-    const score = answers.filter((a) => a.correct).length
-    recordQuizResult(score, questions.length)
-    setFinalAnswers(answers)
-  }
-
-  if (finalAnswers) {
+  // Results
+  if (qs && i >= qs.length) {
+    const score = results.filter(Boolean).length
+    const pct = Math.round((score / qs.length) * 100)
     return (
-      <ScoreScreen
-        questions={questions}
-        answers={finalAnswers}
-        onRestart={() => { setQuestions(null); setFinalAnswers(null) }}
-      />
+      <Page>
+        <PageHeader eyebrow="Quiz complete" title={pct >= 80 ? 'Excellent!' : pct >= 60 ? 'Good effort' : 'Keep practising'} />
+        <div className="card p-6 flex items-center gap-6 bg-navy! text-on-navy border-navy!">
+          <p className="display text-7xl text-gold">{pct}%</p>
+          <p className="text-on-navy/80">{score} of {qs.length} correct</p>
+        </div>
+        <SectionLabel className="mt-8">Review</SectionLabel>
+        <ul className="card divide-y divide-line">
+          {qs.map((q, n) => (
+            <li key={q.id} className="flex gap-3 p-4">
+              {results[n] ? <CheckCircle2 className="text-good shrink-0" size={20} /> : <XCircle className="text-bad shrink-0" size={20} />}
+              <div>
+                <p className="text-[15px] font-medium">{q.question}</p>
+                {!results[n] && <p className="text-sm text-muted mt-1">{q.explanation}</p>}
+                <p className="text-xs text-faint mt-1">Module {moduleById[q.module].num}: {moduleById[q.module].title}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-6 flex flex-col sm:flex-row gap-3">
+          <Button className="flex-1" onClick={start}>New quiz</Button>
+          <Button variant="ghost" className="flex-1" onClick={() => setQs(null)}>Done</Button>
+        </div>
+      </Page>
     )
   }
 
-  if (questions) {
-    return <QuizSession questions={questions} onComplete={handleComplete} />
+  // In progress
+  if (qs) {
+    const q = qs[i]
+    const { label, C } = TYPES[q.type]
+    const ok = results[i]
+    return (
+      <Page>
+        <div className="flex items-center gap-3 pt-6 safe-top">
+          <button onClick={() => setQs(null)} className="grid place-items-center h-9 w-9 -ml-2 rounded-full hover:bg-surface-2" aria-label="Quit quiz"><X size={20} /></button>
+          <Bar value={i + (locked ? 1 : 0)} max={qs.length} className="flex-1" />
+          <span className="text-sm text-muted tabular-nums">{i + 1}/{qs.length}</span>
+        </div>
+        <motion.div key={q.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-6">
+          <p className="eyebrow text-gold">{label} · {moduleById[q.module].title}</p>
+          <h1 className="display text-[1.9rem] sm:text-4xl leading-tight mt-2 font-semibold! normal-case">{q.question}</h1>
+          <div className="mt-6"><C key={q.id} q={q} onSubmit={submit} locked={locked} /></div>
+        </motion.div>
+        {locked && (
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className={`mt-5 rounded-2xl p-4 ${ok ? 'bg-good-soft' : 'bg-bad-soft'}`}>
+            <p className={`font-bold flex items-center gap-2 ${ok ? 'text-good' : 'text-bad'}`}>{ok ? <CheckCircle2 size={20} /> : <XCircle size={20} />}{ok ? 'Correct!' : 'Not quite'}</p>
+            <p className="text-[15px] mt-1">{q.explanation}</p>
+            <Button className="w-full mt-4" onClick={next}>{i + 1 >= qs.length ? 'See results' : 'Next question'} <ArrowRight size={18} /></Button>
+          </motion.div>
+        )}
+      </Page>
+    )
   }
 
-  const avg = progress.quiz.length
-    ? Math.round(progress.quiz.reduce((s, r) => s + r.score / r.total, 0) / progress.quiz.length * 100)
-    : null
-  const recent = progress.quiz[0]
-
+  // Start screen
+  const best = progress.quiz.length ? Math.max(...progress.quiz.map((r) => Math.round((r.score / r.total) * 100))) : null
   return (
-    <div>
-      <Header title="Quiz" subtitle="Test your knowledge" />
-      <div className="p-4 space-y-5">
-        {avg !== null && (
-          <div className="bg-white rounded-2xl p-5 shadow-sm">
-            <p className="text-sm text-gray-500">Average score</p>
-            <p className="text-4xl font-bold text-[#1e3a5f]">{avg}%</p>
-            <p className="text-xs text-gray-400 mt-1">
-              Last: {recent.score}/{recent.total} · {progress.quiz.length} attempt{progress.quiz.length !== 1 ? 's' : ''}
-            </p>
-          </div>
-        )}
-
-        <div className="bg-white rounded-2xl p-5 shadow-sm space-y-3">
-          <h2 className="font-semibold text-[#1e3a5f]">What to expect</h2>
-          {Object.values(TYPE_LABELS).map((t) => (
-            <div key={t} className="flex items-center gap-2 text-sm text-gray-600">
-              <span className="w-2 h-2 rounded-full bg-[#c9a227] flex-shrink-0" />
-              {t}
-            </div>
-          ))}
-          <p className="text-xs text-gray-400">10 questions · countdown timer per question</p>
-        </div>
-
-        <button
-          onClick={startQuiz}
-          className="w-full py-4 rounded-2xl bg-[#1e3a5f] text-white font-bold text-base"
-        >
-          Start Quiz
-        </button>
+    <Page>
+      <PageHeader back="/practice" eyebrow="Practice" title="Quiz" subtitle={`${LEN} random questions from a bank of ${QUIZ.length}, covering all seven modules.`} />
+      <div className="grid grid-cols-2 gap-3">
+        {Object.values(TYPES).map((t) => <div key={t.label} className="card px-4 py-3 text-sm font-semibold">{t.label}</div>)}
       </div>
-    </div>
+      {best !== null && (
+        <div className="card p-5 mt-5 flex items-center justify-between">
+          <div><p className="text-sm text-muted">Best score</p><p className="display text-5xl">{best}%</p></div>
+          <div className="text-right"><p className="text-sm text-muted">Attempts</p><p className="display text-5xl">{progress.quiz.length}</p></div>
+        </div>
+      )}
+      <Button className="w-full mt-6 py-4 text-lg" onClick={start}>Start quiz <ArrowRight size={18} /></Button>
+    </Page>
   )
 }

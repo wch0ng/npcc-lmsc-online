@@ -1,118 +1,115 @@
-import { useNavigate } from 'react-router-dom'
-import allCards from '../data/flashcards.json'
-import allQuestions from '../data/quiz.json'
-import allCases from '../data/casestudies.json'
+import { Link } from 'react-router-dom'
+import { ArrowRight, Timer, BookOpen, Layers, ListChecks } from 'lucide-react'
+import { VAK_THEME } from '../components/vakTheme'
+import { useProgress } from '../hooks/useProgress'
+import { MODULES } from '../data/modules'
+import { FLASHCARDS } from '../data/flashcards'
+import { VAK_STYLES, analyseVak } from '../data/vak'
+import Crest from '../components/Crest'
+import { Page, Ring, SectionLabel, ConfirmButton } from '../components/ui'
 
-export default function Home({ progressApi }) {
-  const { progress, resetAll } = progressApi
-  const navigate = useNavigate()
-
-  const knownCards = Object.values(progress.flashcards).filter((v) => v === 'known').length
-  const cardPct = allCards.length ? Math.round((knownCards / allCards.length) * 100) : 0
-
-  const avgQuiz = progress.quiz.length
-    ? Math.round(progress.quiz.reduce((s, r) => s + r.score / r.total, 0) / progress.quiz.length * 100)
-    : null
-
-  const completedCases = Object.values(progress.casestudies).filter((c) => c.completed).length
-
-  const stats = [
-    {
-      label: 'Cards Mastered',
-      value: `${cardPct}%`,
-      sub: `${knownCards}/${allCards.length} cards`,
-      color: 'bg-blue-50 text-[#1e3a5f]',
-      accent: '#1e3a5f',
-      to: '/flashcards',
-      icon: '🃏',
-      pct: cardPct,
-    },
-    {
-      label: 'Quiz Average',
-      value: avgQuiz !== null ? `${avgQuiz}%` : '—',
-      sub: avgQuiz !== null ? `${progress.quiz.length} attempt${progress.quiz.length !== 1 ? 's' : ''}` : 'Not attempted',
-      color: 'bg-amber-50 text-amber-800',
-      accent: '#c9a227',
-      to: '/quiz',
-      icon: '📝',
-      pct: avgQuiz ?? 0,
-    },
-    {
-      label: 'Case Studies',
-      value: `${completedCases}/${allCases.length}`,
-      sub: completedCases === allCases.length ? 'All done!' : `${allCases.length - completedCases} remaining`,
-      color: 'bg-green-50 text-green-800',
-      accent: '#22c55e',
-      to: '/cases',
-      icon: '📚',
-      pct: allCases.length ? Math.round((completedCases / allCases.length) * 100) : 0,
-    },
-  ]
+export default function Home() {
+  const { progress, resetAll } = useProgress()
+  const read = MODULES.filter((m) => progress.modules[m.id]).length
+  const known = FLASHCARDS.filter((c) => progress.flashcards[c.id] === 'known').length
+  const best = progress.quiz.length ? Math.max(...progress.quiz.map((r) => Math.round((r.score / r.total) * 100))) : null
+  const next = MODULES.find((m) => !progress.modules[m.id]) ?? MODULES[0]
+  const vak = progress.vak[0]
+  const vakProfile = vak && analyseVak(vak.counts)
+  const comm = progress.commtest[0]
 
   return (
     <div>
-      {/* Hero header */}
-      <div className="bg-[#1e3a5f] px-5 pt-12 pb-8">
-        <p className="text-xs font-semibold tracking-widest uppercase text-[#f0c94d] mb-1">NPCC</p>
-        <h1 className="text-2xl font-bold text-white leading-tight">Leadership &amp;</h1>
-        <h1 className="text-2xl font-bold text-white leading-tight">Mentoring Skills</h1>
-        <p className="text-blue-200 text-sm mt-2">Your interactive study companion</p>
-      </div>
+      {/* Hero */}
+      <section className="bg-navy text-on-navy safe-top relative overflow-hidden">
+        <div aria-hidden className="absolute -right-16 -top-10 h-64 w-64 rounded-full border-[28px] border-gold/15" />
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 pt-10 pb-14 relative">
+          <div className="flex items-center gap-3">
+            <Crest size={38} />
+            <p className="eyebrow text-gold">National Police Cadet Corps</p>
+          </div>
+          <h1 className="display uppercase text-[3.2rem] sm:text-6xl mt-5">
+            Leadership &amp;<br />Mentoring Skills
+          </h1>
+          <p className="mt-3 text-on-navy/75 max-w-md">Your course companion: seven modules, practice drills, and two hands-on activities.</p>
+          <Link to={`/learn/${next.id}`} className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gold text-navy font-semibold px-5 py-3 active:scale-[0.98] transition">
+            {read === 0 ? 'Start module 1' : read === MODULES.length ? 'Review modules' : `Continue: ${next.title}`} <ArrowRight size={18} />
+          </Link>
+        </div>
+      </section>
 
-      <div className="p-4 space-y-4 -mt-4">
-        {/* Stat cards */}
-        {stats.map((s) => (
-          <button
-            key={s.label}
-            onClick={() => navigate(s.to)}
-            className="w-full bg-white rounded-2xl p-5 shadow-sm text-left flex items-center gap-4"
-          >
-            <div className={`w-12 h-12 rounded-xl ${s.color} flex items-center justify-center text-2xl flex-shrink-0`}>
-              {s.icon}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs text-gray-500 font-medium">{s.label}</p>
-              <p className="text-2xl font-bold text-gray-900">{s.value}</p>
-              <div className="mt-1.5 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                <div
-                  className="h-full rounded-full transition-all"
-                  style={{ width: `${s.pct}%`, backgroundColor: s.accent }}
-                />
-              </div>
-              <p className="text-xs text-gray-400 mt-1">{s.sub}</p>
-            </div>
-            <span className="text-gray-300 text-lg flex-shrink-0">›</span>
-          </button>
-        ))}
+      <Page className="-mt-6 relative">
+        {/* Progress strip */}
+        <div className="card p-4 grid grid-cols-3 divide-x divide-line">
+          <Stat to="/learn" icon={BookOpen} value={`${read}/${MODULES.length}`} label="Modules read" ring={[read, MODULES.length]} />
+          <Stat to="/practice/flashcards" icon={Layers} value={`${known}/${FLASHCARDS.length}`} label="Cards known" ring={[known, FLASHCARDS.length]} />
+          <Stat to="/practice/quiz" icon={ListChecks} value={best === null ? '—' : `${best}%`} label="Best quiz" ring={[best ?? 0, 100]} />
+        </div>
 
-        {/* Quick actions */}
-        <div className="grid grid-cols-3 gap-3">
-          {[
-            { label: 'Flash\nCards', to: '/flashcards', icon: '🃏', bg: 'bg-[#1e3a5f]' },
-            { label: 'Take\nQuiz', to: '/quiz', icon: '📝', bg: 'bg-[#c9a227]' },
-            { label: 'Case\nStudies', to: '/cases', icon: '📚', bg: 'bg-green-600' },
-          ].map((a) => (
-            <button
-              key={a.to}
-              onClick={() => navigate(a.to)}
-              className={`${a.bg} rounded-2xl p-4 text-white text-center`}
-            >
-              <div className="text-2xl mb-1">{a.icon}</div>
-              <p className="text-xs font-semibold leading-tight whitespace-pre-line">{a.label}</p>
-            </button>
+        {/* Activities */}
+        <SectionLabel className="mt-9">Activities</SectionLabel>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <Link to={vak ? '/activities/vak/result' : '/activities/vak'} className="card p-5 group hover:-translate-y-0.5 transition">
+            <div className="flex gap-1.5">
+              {['v', 'a', 'k'].map((k) => {
+                const Icon = VAK_THEME[k].icon
+                return <span key={k} className={`grid place-items-center h-9 w-9 rounded-lg ${VAK_THEME[k].soft}`}><Icon size={18} /></span>
+              })}
+            </div>
+            <h3 className="display text-2xl uppercase mt-4">VAK Questionnaire</h3>
+            {vakProfile ? (
+              <p className="text-sm text-muted mt-1">
+                Your style: <b className="text-ink">{vakProfile.blend.map((s) => VAK_STYLES[s].name).join(' + ')}</b> · see feedback
+              </p>
+            ) : (
+              <p className="text-sm text-muted mt-1">30 quick questions to discover how you learn best.</p>
+            )}
+            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink">{vak ? 'View my result' : 'Start'} <ArrowRight size={16} className="group-hover:translate-x-0.5 transition" /></span>
+          </Link>
+
+          <Link to="/activities/comm-test" className="card p-5 group hover:-translate-y-0.5 transition">
+            <span className="grid place-items-center h-9 w-9 rounded-lg bg-gold-soft text-ink"><Timer size={18} /></span>
+            <h3 className="display text-2xl uppercase mt-4">2½ Minutes Test</h3>
+            {comm ? (
+              <p className="text-sm text-muted mt-1">Last attempt: <b className="text-ink">{comm.passed ? 'Good receiver ✓' : 'Caught out'}</b></p>
+            ) : (
+              <p className="text-sm text-muted mt-1">Are you a good receiver? A timed communication challenge.</p>
+            )}
+            <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink">{comm ? 'Try again' : 'Start'} <ArrowRight size={16} className="group-hover:translate-x-0.5 transition" /></span>
+          </Link>
+        </div>
+
+        {/* Module list */}
+        <SectionLabel className="mt-9">Course modules</SectionLabel>
+        <ol className="card divide-y divide-line overflow-hidden">
+          {MODULES.map((m) => (
+            <li key={m.id}>
+              <Link to={`/learn/${m.id}`} className="flex items-center gap-4 px-4 py-3.5 hover:bg-surface-2 transition">
+                <span className={`display text-2xl w-7 text-center ${progress.modules[m.id] ? 'text-gold' : 'text-faint'}`}>{m.num}</span>
+                <span className="flex-1 min-w-0">
+                  <span className="block font-semibold">{m.title}</span>
+                  <span className="block text-sm text-muted truncate">{m.tagline}</span>
+                </span>
+                {progress.modules[m.id] && <span className="text-xs font-semibold text-good">Read</span>}
+              </Link>
+            </li>
           ))}
-        </div>
+        </ol>
 
-        {/* Reset */}
-        <div className="pt-2 text-center">
-          <button
-            onClick={() => { if (window.confirm('Reset all progress?')) resetAll() }}
-            className="text-xs text-gray-400 underline"
-          >
-            Reset all progress
-          </button>
+        <div className="mt-10 text-center">
+          <ConfirmButton label="Reset all progress" confirmLabel="Tap again to erase everything" onConfirm={resetAll} className="text-xs text-faint underline underline-offset-4" />
         </div>
-      </div>
+      </Page>
     </div>
+  )
+}
+
+function Stat({ to, icon: Icon, value, label, ring }) {
+  return (
+    <Link to={to} className="flex flex-col items-center text-center gap-2 px-1">
+      <Ring value={ring[0]} max={ring[1]} size={44} stroke={5}><Icon size={16} className="text-muted" /></Ring>
+      <span className="display text-2xl leading-none">{value}</span>
+      <span className="text-[11px] font-medium text-muted leading-tight">{label}</span>
+    </Link>
   )
 }

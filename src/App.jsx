@@ -1,27 +1,47 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import BottomNav from './components/layout/BottomNav'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { ProgressProvider } from './components/ProgressProvider'
+import AppShell from './components/AppShell'
 import Home from './pages/Home'
+import Learn from './pages/Learn'
+import Module from './pages/Module'
+import Practice from './pages/Practice'
 import FlashCards from './pages/FlashCards'
 import Quiz from './pages/Quiz'
-import CaseStudies from './pages/CaseStudies'
-import { useProgress } from './hooks/useProgress'
+import Scenarios from './pages/Scenarios'
+import Scenario from './pages/Scenario'
+import Activities from './pages/Activities'
+import VakIntro from './pages/vak/VakIntro'
+import VakRun from './pages/vak/VakRun'
+import VakResult from './pages/vak/VakResult'
+import CommIntro from './pages/comm/CommIntro'
+import CommRun from './pages/comm/CommRun'
+import CommResult from './pages/comm/CommResult'
 
 export default function App() {
-  const progressApi = useProgress()
-
   return (
-    <BrowserRouter basename="/npcc-lms">
-      <div className="flex flex-col min-h-screen bg-slate-50 max-w-lg mx-auto">
-        <main className="flex-1 pb-20">
-          <Routes>
-            <Route path="/" element={<Home progressApi={progressApi} />} />
-            <Route path="/flashcards" element={<FlashCards progressApi={progressApi} />} />
-            <Route path="/quiz" element={<Quiz progressApi={progressApi} />} />
-            <Route path="/cases" element={<CaseStudies progressApi={progressApi} />} />
-          </Routes>
-        </main>
-        <BottomNav />
-      </div>
-    </BrowserRouter>
+    <ProgressProvider>
+      <HashRouter>
+        <Routes>
+          <Route element={<AppShell />}>
+            <Route index element={<Home />} />
+            <Route path="learn" element={<Learn />} />
+            <Route path="learn/:id" element={<Module />} />
+            <Route path="practice" element={<Practice />} />
+            <Route path="practice/flashcards" element={<FlashCards />} />
+            <Route path="practice/quiz" element={<Quiz />} />
+            <Route path="practice/scenarios" element={<Scenarios />} />
+            <Route path="practice/scenarios/:id" element={<Scenario />} />
+            <Route path="activities" element={<Activities />} />
+            <Route path="activities/vak" element={<VakIntro />} />
+            <Route path="activities/vak/run" element={<VakRun />} />
+            <Route path="activities/vak/result" element={<VakResult />} />
+            <Route path="activities/comm-test" element={<CommIntro />} />
+            <Route path="activities/comm-test/run" element={<CommRun />} />
+            <Route path="activities/comm-test/result" element={<CommResult />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Route>
+        </Routes>
+      </HashRouter>
+    </ProgressProvider>
   )
 }
