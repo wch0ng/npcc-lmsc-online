@@ -1,0 +1,82 @@
+[
+  {
+    "id": "cs1",
+    "title": "The Unmotivated Section",
+    "category": "Leadership",
+    "duration": "10 min",
+    "scenario": "You are a Section Commander, Corporal Tan, leading a section of eight cadets during a weekend camp. Over the past two sessions, you have noticed that three cadets consistently arrive late for fall-in, show little enthusiasm during drills, and are distracted during lessons.\n\nWhen you speak to them individually, they say everything is fine. However, you overhear them complaining to each other that the camp activities are 'pointless' and 'the same as last year.'\n\nYour Sergeant has reminded you that your section's performance will be assessed at the end of the camp, and expects improvement.",
+    "questions": [
+      {
+        "id": "cs1q1",
+        "type": "mcq",
+        "question": "What is the MOST appropriate first step for Cpl Tan?",
+        "options": [
+          "Report the three cadets to the Sergeant for disciplinary action",
+          "Hold a section meeting to address the behaviour publicly",
+          "Have a private, non-judgmental conversation with each cadet to understand their perspective",
+          "Ignore the behaviour and focus on the section's overall performance"
+        ],
+        "answer": "Have a private, non-judgmental conversation with each cadet to understand their perspective",
+        "explanation": "Understanding the root cause is essential before taking action. Private conversations preserve dignity and are more likely to reveal genuine concerns."
+      },
+      {
+        "id": "cs1q2",
+        "type": "mcq",
+        "question": "The cadets admit they feel the camp lacks challenge. Which leadership response is most effective?",
+        "options": [
+          "Tell them to follow orders and stop complaining",
+          "Acknowledge their feedback and explore if any activities can be adjusted or enriched",
+          "Promise to change the entire programme",
+          "Assign them additional duties as a consequence"
+        ],
+        "answer": "Acknowledge their feedback and explore if any activities can be adjusted or enriched",
+        "explanation": "Participative leadership — acknowledging concerns and involving the team — builds ownership and motivation without undermining authority."
+      },
+      {
+        "id": "cs1q3",
+        "type": "open",
+        "question": "As a mentor, what specific steps would you take over the next 24 hours to re-engage the unmotivated cadets? Write 2–3 actionable steps."
+      }
+    ]
+  },
+  {
+    "id": "cs2",
+    "title": "The Conflict",
+    "category": "Mentoring",
+    "duration": "10 min",
+    "scenario": "You are a Senior Cadet, Lance Corporal Priya, responsible for two junior cadets in your squad: Ahmad and Wei Jie. Ahmad and Wei Jie have been at odds for two weeks following a disagreement during a group project. They now refuse to work with each other, and the tension is affecting the rest of the squad.\n\nBoth have approached you separately with their grievances. Ahmad feels Wei Jie takes over and never listens to his ideas. Wei Jie feels Ahmad is always criticising and never contributes positively.\n\nThe section's next activity requires both cadets to work as a pair.",
+    "questions": [
+      {
+        "id": "cs2q1",
+        "type": "mcq",
+        "question": "What is the LEAST helpful approach to resolving this conflict?",
+        "options": [
+          "Facilitating a joint conversation where both cadets share their perspectives",
+          "Asking a senior officer to separate the two cadets permanently",
+          "Helping each cadet understand the other's point of view before a joint meeting",
+          "Setting clear expectations for respectful collaboration"
+        ],
+        "answer": "Asking a senior officer to separate the two cadets permanently",
+        "explanation": "Permanent separation avoids the conflict rather than resolving it. It also deprives both cadets of the opportunity to develop conflict-resolution skills."
+      },
+      {
+        "id": "cs2q2",
+        "type": "mcq",
+        "question": "When facilitating the joint conversation, LCP Priya should:",
+        "options": [
+          "Take Ahmad's side as she heard his complaint first",
+          "Remain neutral, ensure both feel heard, and guide them toward a mutual agreement",
+          "Tell them both to stop being childish and get on with it",
+          "Let them argue it out without interference"
+        ],
+        "answer": "Remain neutral, ensure both feel heard, and guide them toward a mutual agreement",
+        "explanation": "A mentor-mediator stays neutral, uses active listening, and facilitates understanding — rather than judging or dismissing either party."
+      },
+      {
+        "id": "cs2q3",
+        "type": "open",
+        "question": "What ground rules would you set before the joint conversation between Ahmad and Wei Jie? List at least three."
+      }
+    ]
+  }
+]

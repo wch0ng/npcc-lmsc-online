@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fc1",
+    "category": "Leadership Principles",
+    "front": "What is the NCO's primary duty?",
+    "back": "To lead, train, and care for subordinates — ensuring their welfare, discipline, and mission readiness."
+  },
+  {
+    "id": "fc2",
+    "category": "Leadership Principles",
+    "front": "Name the three core leadership styles.",
+    "back": "Authoritative (directive), Participative (democratic), and Delegative (laissez-faire)."
+  },
+  {
+    "id": "fc3",
+    "category": "Leadership Principles",
+    "front": "What does 'Lead by Example' mean for a cadet leader?",
+    "back": "Demonstrating the standard you expect from others — in bearing, discipline, punctuality, and performance."
+  },
+  {
+    "id": "fc4",
+    "category": "Leadership Principles",
+    "front": "What are the four functions of management?",
+    "back": "Planning, Organising, Leading, Controlling (POLC)."
+  },
+  {
+    "id": "fc5",
+    "category": "Leadership Principles",
+    "front": "Describe 'Mission Command' in your own words.",
+    "back": "Trusting subordinates with the intent of the mission and giving them the freedom to act within their commander's guidance."
+  },
+  {
+    "id": "fc6",
+    "category": "Mentoring Skills",
+    "front": "Name the 4 stages of a mentoring cycle.",
+    "back": "Rapport Building → Needs Assessment → Development Plan → Review & Closure."
+  },
+  {
+    "id": "fc7",
+    "category": "Mentoring Skills",
+    "front": "What is the difference between mentoring and coaching?",
+    "back": "Mentoring is a long-term relationship focused on overall growth; coaching is short-term and skill/goal-specific."
+  },
+  {
+    "id": "fc8",
+    "category": "Mentoring Skills",
+    "front": "What is active listening?",
+    "back": "Fully concentrating on, understanding, and responding to a speaker — including verbal and non-verbal cues — without judgment."
+  },
+  {
+    "id": "fc9",
+    "category": "Mentoring Skills",
+    "front": "What does SMART stand for in goal-setting?",
+    "back": "Specific, Measurable, Achievable, Relevant, Time-bound."
+  },
+  {
+    "id": "fc10",
+    "category": "Mentoring Skills",
+    "front": "Name three qualities of an effective mentor.",
+    "back": "Trustworthiness, empathy, patience, good communication, and commitment to the mentee's growth."
+  }
+]

@@ -1,0 +1,164 @@
+[
+  {
+    "id": "q1",
+    "type": "mcq",
+    "timeLimit": 30,
+    "question": "Which leadership style gives subordinates full authority to make decisions with minimal supervisor guidance?",
+    "options": ["Authoritative", "Participative", "Laissez-faire", "Transactional"],
+    "answer": "Laissez-faire",
+    "explanation": "Laissez-faire (delegative) leadership allows team members to make decisions independently. It works best with highly experienced and self-motivated individuals."
+  },
+  {
+    "id": "q2",
+    "type": "mcq",
+    "timeLimit": 30,
+    "question": "What is the FIRST step in the mentoring cycle?",
+    "options": ["Needs Assessment", "Development Plan", "Rapport Building", "Review & Closure"],
+    "answer": "Rapport Building",
+    "explanation": "Rapport Building is the foundation of any mentoring relationship. Without trust, the mentee will not open up about challenges and goals."
+  },
+  {
+    "id": "q3",
+    "type": "mcq",
+    "timeLimit": 30,
+    "question": "Which of the following best describes 'leading by example'?",
+    "options": [
+      "Telling others what to do clearly",
+      "Demonstrating the standard you expect through your own actions",
+      "Achieving the highest score in assessments",
+      "Volunteering for every task"
+    ],
+    "answer": "Demonstrating the standard you expect through your own actions",
+    "explanation": "Leading by example means your behaviour sets the benchmark. Subordinates observe and follow what you do, not just what you say."
+  },
+  {
+    "id": "q4",
+    "type": "sort_order",
+    "timeLimit": 45,
+    "question": "Arrange the steps of the Problem-Solving Process in the correct order.",
+    "items": [
+      "Implement the solution",
+      "Identify the problem",
+      "Evaluate the outcome",
+      "Analyse and generate options",
+      "Select the best option"
+    ],
+    "answer": [
+      "Identify the problem",
+      "Analyse and generate options",
+      "Select the best option",
+      "Implement the solution",
+      "Evaluate the outcome"
+    ],
+    "explanation": "Effective problem-solving follows: Identify → Analyse → Select → Implement → Evaluate. Skipping steps leads to poor decisions or recurring issues."
+  },
+  {
+    "id": "q5",
+    "type": "matching",
+    "timeLimit": 45,
+    "question": "Match each NPCC Core Value to its definition.",
+    "pairs": [
+      { "term": "Loyalty", "definition": "Faithful to the nation, organisation, and team" },
+      { "term": "Integrity", "definition": "Acting with honesty and strong moral principles" },
+      { "term": "Courage", "definition": "Doing what is right even when it is difficult" },
+      { "term": "Resilience", "definition": "Bouncing back stronger from setbacks" }
+    ],
+    "explanation": "NPCC's core values — Loyalty, Integrity, Courage, and Resilience — guide every cadet's conduct on and off duty."
+  },
+  {
+    "id": "q6",
+    "type": "drag_drop",
+    "timeLimit": 45,
+    "question": "Sort these leadership qualities into the correct category.",
+    "zones": ["Task-Focused", "People-Focused"],
+    "items": [
+      { "id": "d1", "label": "Setting clear objectives", "zone": "Task-Focused" },
+      { "id": "d2", "label": "Empathy towards team members", "zone": "People-Focused" },
+      { "id": "d3", "label": "Monitoring progress against targets", "zone": "Task-Focused" },
+      { "id": "d4", "label": "Recognising individual achievements", "zone": "People-Focused" },
+      { "id": "d5", "label": "Defining roles and responsibilities", "zone": "Task-Focused" },
+      { "id": "d6", "label": "Building team cohesion", "zone": "People-Focused" }
+    ],
+    "explanation": "Effective leaders balance task-focused behaviours (achieving goals) with people-focused behaviours (caring for team members). Both are essential."
+  },
+  {
+    "id": "q7",
+    "type": "mcq",
+    "timeLimit": 30,
+    "question": "What does the 'R' in SMART goal-setting stand for?",
+    "options": ["Realistic", "Relevant", "Results-oriented", "Responsive"],
+    "answer": "Relevant",
+    "explanation": "In SMART goals: Specific, Measurable, Achievable, Relevant, Time-bound. Relevant ensures the goal matters to the mentee's development."
+  },
+  {
+    "id": "q8",
+    "type": "mcq",
+    "timeLimit": 30,
+    "question": "Which communication technique involves repeating back what someone has said in your own words to confirm understanding?",
+    "options": ["Empathising", "Paraphrasing", "Summarising", "Questioning"],
+    "answer": "Paraphrasing",
+    "explanation": "Paraphrasing demonstrates active listening and confirms mutual understanding, building trust between mentor and mentee."
+  },
+  {
+    "id": "q9",
+    "type": "sort_order",
+    "timeLimit": 45,
+    "question": "Arrange the stages of the mentoring cycle in the correct order.",
+    "items": [
+      "Review & Closure",
+      "Development Plan",
+      "Rapport Building",
+      "Needs Assessment"
+    ],
+    "answer": [
+      "Rapport Building",
+      "Needs Assessment",
+      "Development Plan",
+      "Review & Closure"
+    ],
+    "explanation": "The mentoring cycle progresses: Build trust → Identify needs → Plan development → Review and close. Each stage depends on the previous one."
+  },
+  {
+    "id": "q10",
+    "type": "matching",
+    "timeLimit": 45,
+    "question": "Match each leadership style to its key characteristic.",
+    "pairs": [
+      { "term": "Authoritative", "definition": "Leader makes all decisions and gives direct orders" },
+      { "term": "Participative", "definition": "Leader involves team in decision-making" },
+      { "term": "Laissez-faire", "definition": "Leader delegates full authority to the team" },
+      { "term": "Transformational", "definition": "Leader inspires change through vision and motivation" }
+    ],
+    "explanation": "Each leadership style suits different situations. No single style is best — effective leaders adapt based on team readiness and task urgency."
+  },
+  {
+    "id": "q11",
+    "type": "drag_drop",
+    "timeLimit": 45,
+    "question": "Categorise these mentoring activities.",
+    "zones": ["Formal Mentoring", "Informal Mentoring"],
+    "items": [
+      { "id": "m1", "label": "Scheduled progress review sessions", "zone": "Formal Mentoring" },
+      { "id": "m2", "label": "Casual conversation during breaks", "zone": "Informal Mentoring" },
+      { "id": "m3", "label": "Structured SMART goal-setting", "zone": "Formal Mentoring" },
+      { "id": "m4", "label": "Sharing personal experience on the field", "zone": "Informal Mentoring" },
+      { "id": "m5", "label": "Written development plan", "zone": "Formal Mentoring" },
+      { "id": "m6", "label": "Encouraging words after a tough drill", "zone": "Informal Mentoring" }
+    ],
+    "explanation": "Formal mentoring is planned and structured; informal mentoring happens naturally in everyday interactions. Both are valuable and complementary."
+  },
+  {
+    "id": "q12",
+    "type": "mcq",
+    "timeLimit": 30,
+    "question": "When a cadet leader notices a subordinate is struggling but has not spoken up, what should the leader do FIRST?",
+    "options": [
+      "Report the cadet to a senior officer immediately",
+      "Wait for the cadet to raise the issue on their own",
+      "Create a private opportunity to check in and listen",
+      "Assign the cadet an easier task without explanation"
+    ],
+    "answer": "Create a private opportunity to check in and listen",
+    "explanation": "Proactive pastoral care is a key mentoring responsibility. Approaching the cadet privately and listening without judgment builds trust and helps address issues early."
+  }
+]

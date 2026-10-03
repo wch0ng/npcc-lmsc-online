@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #1e3a5f;
+  --color-navy-light: #2d5282;
+  --color-gold: #c9a227;
+  --color-gold-light: #f0c94d;
+  --color-surface: #f8fafc;
+}
+
+/* Card flip 3D */
+.perspective { perspective: 1000px; }
+.transform-style-3d { transform-style: preserve-3d; }
+.backface-hidden { backface-visibility: hidden; }
+.rotate-y-180 { transform: rotateY(180deg); }
+
+html, body, #root {
+  height: 100%;
+  overscroll-behavior: none;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+}
+
+body { margin: 0; }
